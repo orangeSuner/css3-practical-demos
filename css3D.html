@@ -191,18 +191,33 @@
             -webkit-animation: shine 4s infinite;    /*给背景添加动画改变位置*/
         }
         @keyframes shine {
-
             from {background-position: 100%;}
 
             to {background-position: 0;}
-
         }
         @-webkit-keyframes shine {
-
             from {background-position: 100%;}
 
             to {background-position: 0;}
-
+        }
+        /* 伪类 */
+        .puppetClass{width:200px; height:100px; background-color:lightblue; position:relative;}
+        .puppetClass::before{content:""; width:20px; height:20px; position:absolute; left:0; top:0; background-color:gold; display:block; border-radius:50%; animation:circle_fly_horizontal 1.7s linear 0s infinite alternate,circle_fly_vertical 1.45s ease-in 0s infinite alternate; -webkit-animation:circle_fly_horizontal 1.7s linear 0s infinite alternate,circle_fly_vertical 1.45s ease-in 0s infinite alternate;}
+        @keyframes circle_fly_horizontal{
+            0%{left:0;}
+            100%{left:180px;}
+        }
+        -webkit-@keyframes circle_fly_horizontal{
+            0%{left:0;}
+            100%{left:180px;}
+        }
+        @keyframes circle_fly_vertical{
+            0%{top:0;}
+            100%{top:80px;}
+        }
+        -webkit-@keyframes circle_fly_vertical{
+            0%{top:0;}
+            100%{top:80px;}
         }
     </style>
 </head>
@@ -231,5 +246,7 @@
     </div>
     <!-- 艺术字 -->
     <div class="art_font">manor wine</div>
+    <!-- 伪类应用-碰撞检测 -->
+    <div class="puppetClass"></div>
 </body>
 </html>
