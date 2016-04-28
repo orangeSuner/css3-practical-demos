@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>css3D</title>
+    <style>
+        *{margin:0; padding:0;}
+        .clear{clear:both;}
+        body{padding-bottom:200px;}
+        .circle_style{border-radius:50% !important;}
+        .font_style{font-family:"Microsoft Yahei"; font-size:18px; color:#fff; font-weight:bold; border-radius:10px; margin-top:30px; text-align:center; line-height:100px;}
+        .trans1{width:100px; height:100px; background-color:#ff6800; border-radius:10px; transition:transform 0.5s linear; -webkit-transition:-webkit-transform 0.5s linear;}
+        .trans1:hover{transform:rotateY(60deg) rotateX(50deg) rotateZ(30deg); -webkit-transform:rotateY(60deg) rotateX(50deg) rotateZ(30deg);}
+        .trans2{width:100px; height:100px; background-color:#0b7e27; transform:rotateX(60deg) rotateZ(20deg); -webkit-transform:rotateX(60deg) rotateZ(20deg); box-shadow: 14px 18px #ccc; transition:transform 0.5s linear,box-shadow 0.5s linear; -webkit-transition:-webkit-transform 0.5s linear,-webkit-box-shadow 0.5s linear;}
+        .trans2:hover{transform:rotateX(0deg) rotateZ(0deg); -webkit-transform:rotateX(0deg) rotateZ(0deg); box-shadow: 0px 0px #ccc;}
+        .trans3{width:100px; height:100px; background-color:#ff6800; box-shadow: 10px 10px #ccc;}
+        .trans4{width:100px; height:100px; background-color:#0b7e27; transition:border-radius 0.5s ease; -webkit-transition:border-radius 0.5s ease;}
+        .trans4:hover{border-radius:50%;}
+        .trans5{width:100px; height:100px; line-height:100px; background-color:#ff6800; transition:width 0.5s ease,height 0.5s ease,line-height 0.5s ease; -webkit-transition:width 0.5s ease,height 0.5s ease,line-height 0.5s ease;}
+        .trans5:hover{width:120px; height:120px; line-height:120px;}
+        /* 心跳效果 */
+        @keyframes btnZoom{
+            0%{
+                opacity:1.0;
+                transform:scale(1, 1)
+            }
+            60%{
+                opacity:0.0;
+                transform:scale(1.2, 1.2)
+            }
+            100%{
+                opacity:0.0;
+            }
+        }
+        @-moz-keyframes btnZoom{
+            0%{
+                opacity:1.0;
+                transform:scale(1, 1)
+            }
+            60%{
+                opacity:0.0;
+                transform:scale(1.2, 1.2)
+            }
+            100%{
+                opacity:0.0;
+            }
+        }
+        @-webkit-keyframes btnZoom{
+            0%{
+                opacity:1.0;
+                transform:scale(1, 1)
+            }
+            60%{
+                opacity:0.0;
+                transform:scale(1.2, 1.2)
+            }
+            100%{
+                opacity:0.0;
+            }
+        }
+        @-o-keyframes btnZoom{
+            0%{
+                opacity:1.0;
+                transform:scale(1, 1)
+            }
+            60%{
+                opacity:0.0;
+                transform:scale(1.2, 1.2)
+            }
+            100%{
+                opacity:0.0;
+            }
+        }
+        .trans6,.trans6 span{
+            cursor:pointer;
+            display:block;
+            width:100px;
+            height:100px;
+            background-color:#ff6800;
+            border-radius:10px;
+        }
+        .trans6 span{
+            z-index: 1;
+            margin: 0;
+            opacity: 1;
+        }
+        .trans6:hover span {
+            animation: btnZoom 1 linear 0.7s;
+            -moz-animation: btnZoom 1 linear 0.7s;
+            -webkit-animation: btnZoom 1 linear 0.7s;
+            -o-animation: btnZoom 1 linear 0.7s;
+        }
+        .trans7{width:100px; height:100px; background-color:#0b7e27; border-radius: 70px 20px 70px 10px; transition:transform 0.4s linear; -webkit-transition:-webkit-transform 0.4s linear;}
+        .trans7:hover{transform:rotate(45deg); -webkit-transform:rotate(45deg);}
+        .heart_style{position:relative; opacity:0.4; height:180px;}
+        .heart_circle1{width:100px; height:100px; background-color:deeppink; position:absolute; border-radius:50%;}
+        .heart_circle2{width:100px; height:100px; background-color:deeppink; position:absolute; border-radius:50%; left:85px;}
+        .heart_cubic{width:100px; height:100px; background-color:deeppink; position:absolute; top:42px; left:42px; transform:rotate(45deg); -webkit-transform:rotate(45deg);}
+        .heart_style:hover{opacity:1; cursor:pointer;}
+        /* 平行四边形 */
+        .parallelogram{
+            position:relative;
+            width:200px;;
+            height:150px;
+        }
+        .parallelogram:hover>.triangle2{
+            transform: rotateX(180deg);
+            -webkit-transform: rotateX(180deg);
+        }
+        /* 三角形 */
+        .triangle1{
+            position:absolute;
+            width: 0;
+            height: 0;
+            border-left: 80px solid rgba(0,0,0,0);
+            border-right: 80px solid burlywood;
+            border-top: 80px solid rgba(0,0,0,0);
+            border-bottom: 80px rgba(0,0,0,0);
+        }
+        .triangle2{
+            position:absolute;
+            left:160px;
+            width: 0;
+            height: 0;
+            border-right: 80px solid rgba(0,0,0,0);
+            border-left: 80px solid burlywood;
+            border-top: 80px solid rgba(0,0,0,0);
+            border-bottom: 80px rgba(0,0,0,0);
+            transition:transform 0.5s ease;
+            -webkit-transition:-webkit-transform 0.5s ease;
+        }
+        /* input美化-悬挂特效 */
+        .better_input{width:180px; height:30px; position:relative; border:1px solid #ccc; background-color:honeydew;}
+        .better_input_title{position:absolute; top:0; left:0; transform-origin:left bottom; -webkit-transform-origin:left bottom; width:50px; height:30px; float:left; background-color:darkseagreen; text-align:center; line-height:30px; font-family:"Microsoft Yahei"; font-size:14px; color:#fff;}
+        .better_input_i{position:absolute; top:0; left:0; width:180px; height:30px; background-color:floralwhite; border:none; text-indent:50px;}
+        .better_input_i:focus+.better_input_title{outline:none; animation: hang 1 ease-in-out 1s; -webkit-animation: hang 1 ease-in-out 1s; animation-fill-mode:forwards; -webkit-animation-fill-mode:forwards;}
+        .better_input_i:focus{outline:none; background-color:honeydew; text-indent:0;}
+        @keyframes hang{
+            0%{
+                transform:rotate(0deg);
+            }
+            20%{
+                transform:rotate(100deg);
+            }
+            40%{
+                transform:rotate(50deg);
+            }
+            60%{
+                transform:rotate(90deg);
+            }
+            80%{
+                transform:rotate(60deg);
+            }
+            100%{
+                transform:rotate(80deg);
+            }
+        }
+        @-webkit-keyframes hang{
+            0%{
+                transform:rotate(0deg);
+            }
+            20%{
+                transform:rotate(100deg);
+            }
+            40%{
+                transform:rotate(50deg);
+            }
+            60%{
+                transform:rotate(90deg);
+            }
+            80%{
+                transform:rotate(60deg);
+            }
+            100%{
+                transform:rotate(80deg);
+            }
+        }
+        .art_font{
+            width:50%;
+            margin:0 auto;
+            margin-top:50px;
+            line-height:50px;
+            font-size:50px;
+            text-align:center;
+            -webkit-background-clip: text;    /*按文字裁剪*/
+            -webkit-text-fill-color: transparent;    /*文字的颜色使用背景色*/
+            background-color:#19385c;    /*设置一个背景色*/
+            background-image: -webkit-linear-gradient(-45deg, rgba(0, 0, 0, 0.6) 30%, #aff0ff 50%, rgba(0, 0, 0, 0.6) 70%);        /*设置渐变的背景，按对角线渐变*/
+            background-blend-mode: hard-light;    /*设置背景为混合模式下的强光模式*/
+            background-size: 200%;
+            -webkit-animation: shine 4s infinite;    /*给背景添加动画改变位置*/
+        }
+        @keyframes shine {
+
+            from {background-position: 100%;}
+
+            to {background-position: 0;}
+
+        }
+        @-webkit-keyframes shine {
+
+            from {background-position: 100%;}
+
+            to {background-position: 0;}
+
+        }
+    </style>
+</head>
+<body>
+    <div class="trans1 font_style">焦糖面包</div>
+    <div class="trans2 font_style">焦糖面包</div>
+    <div class="trans3 font_style circle_style">焦糖面包</div>
+    <div class="trans4 font_style">焦糖面包</div>
+    <div class="trans5 font_style circle_style">焦糖面包</div>
+    <div class="trans6 font_style"><span>焦糖面包</span></div>
+    <div class="trans7 font_style"><span>焦糖面包</span></div>
+    <div class="heart_style">
+        <div class="heart_circle1"></div>
+        <div class="heart_circle2"></div>
+        <div class="heart_cubic"></div>
+    </div>
+    <div class="parallelogram">
+        <div class="triangle1"></div>
+        <div class="triangle2"></div>
+    </div>
+    <!-- input美化 -->
+    <div class="better_input">
+        <input class="better_input_i" type="text"/>
+        <div class="better_input_title">邮 箱</div>
+        <div class="clear"></div>
+    </div>
+    <!-- 艺术字 -->
+    <div class="art_font">manor wine</div>
+</body>
+</html>
