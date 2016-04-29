@@ -219,6 +219,13 @@
             0%{top:0;}
             100%{top:80px;}
         }
+        /* 立体阴影按钮 */
+        .cubic_button{width:100px; height:40px; line-height:40px; cursor:pointer; background-color:yellowgreen; margin-top:30px; margin-left:30px; box-shadow: 2px 2px 3px rgba(0,0,0,0.2);}
+        .cubic_button:hover{box-shadow: 2px 2px 3px rgba(0,0,0,0.2) inset;}
+        /* 伪类-图片遮罩动画 */
+        .cover_animate{width:160px; height:160px; cursor:pointer; background-color:coral; margin-top:30px; margin-left:30px;}
+        .cover_animate::before{content:"焦糖面包"; width:160px; height:160px; line-height:160px; display:block; border-radius:10px; position:absolute; z-index:10; cursor:pointer; background-color:mediumorchid; transition:transform 1s; -webkit-transition:transform 1s;}
+        .cover_animate:hover::before{transform:scale(0,0) rotate(360deg); -webkit-transform:scale(0,0) rotate(360deg);}
     </style>
 </head>
 <body>
@@ -248,5 +255,9 @@
     <div class="art_font">manor wine</div>
     <!-- 伪类应用-碰撞检测 -->
     <div class="puppetClass"></div>
+    <!-- 立体阴影按钮 -->
+    <div class="cubic_button font_style">push</div>
+    <!-- 伪类-图片遮罩动画 -->
+    <div class="cover_animate font_style"></div>
 </body>
 </html>
